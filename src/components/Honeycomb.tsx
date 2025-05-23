@@ -5,11 +5,12 @@ import './Honeycomb.css';
 const Honeycomb: React.FC = () => {
   const [selectedNumbers, setSelectedNumbers] = useState<Set<number>>(new Set());
 
-  // Create hexagon SVG path
+  // Create hexagon SVG path - rotated to have corner on top
   const createHexagonPath = () => {
     const points = [];
     for (let i = 0; i < 6; i++) {
-      const angle = (i * Math.PI) / 3;
+      // Start at 30 degrees (π/6) to have a point at the top
+      const angle = ((i * Math.PI) / 3) + (Math.PI / 6);
       const x = 30 + 25 * Math.cos(angle);
       const y = 26 + 25 * Math.sin(angle);
       points.push(`${x},${y}`);
